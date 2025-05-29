@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  email    String @unique
+  password String
+  role     String
+
+  // সম্পর্ক: একজন User অনেক Advocate থাকতে পারে
+}
+
+model Advocate {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  email          String @unique
+  phone          String
+  specialization String
+  experience     Int
+  advocateId     String?
+}
+
+model Legalcase {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  tittle      String
+  description String
+  status      String
+}
+
+model Court {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  address String
+  type    String
+}
