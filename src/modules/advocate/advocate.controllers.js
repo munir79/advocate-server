@@ -26,6 +26,7 @@ const getAllAdvocates=async(req,res,next)=>{
    res.status(201).json({
     success:true,
     message:"Get all Advocated Data SucessFully",
+    total:advocate.length,
     data:advocate
 
    })
