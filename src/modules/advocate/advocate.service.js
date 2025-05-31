@@ -36,8 +36,23 @@ const getSingleAdvocateServices = async (id) => {
   }
 };
 
+//update advocate Service
+
+const UpdateAdvocateService = async (id, advocateData) => {
+  try {
+    const updateAdvocate = await prisma.advocate.update({
+      where: { id: id },
+      data: advocateData,
+    });
+    return updateAdvocate;
+  } catch (err) {
+    throw new Error('failed to update advocate ');
+  }
+};
+
 export const AdvocateService = {
   CreateAdvocateService,
   getAllAdvocateServices,
   getSingleAdvocateServices,
+  UpdateAdvocateService,
 };

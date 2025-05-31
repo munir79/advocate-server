@@ -6,5 +6,6 @@ const router =expres.Router();
 router.post('/create-advocate',AdvocateControllers.CreateAdvocateControllers);
 router.get('/',AdvocateControllers.getAllAdvocates)
 router.get('/:id' ,AdvocateControllers.getSingleAdvocate)
+router.put('/:id',AdvocateControllers.updateAdvocateControllers);
 
 export const  AdvocateRoute=router;
