@@ -72,9 +72,33 @@ const updateAdvocateControllers = async (req, res, next) => {
   }
 };
 
+// deleteAdvocate 
+
+const deleteAdvocateControllers=async(req,res,next)=>{
+    try{
+     const {id}=req.params;
+     const deleteAdvocate=await AdvocateService.deleteAdvocateService(id);
+     if(!deleteAdvocate){
+        return res.status(404).json({
+            success:false,
+            message:" advocate not found "
+        })
+     }
+     res.status(200).json({
+        success:true,
+        message:"Advocate deleted SuccessFully",
+        data:deleteAdvocate,
+     })
+    }
+    catch(err){
+        next(err)
+    }
+}
+
 export const AdvocateControllers = {
   CreateAdvocateControllers,
   getAllAdvocates,
   getSingleAdvocate,
   updateAdvocateControllers,
+  deleteAdvocateControllers
 };

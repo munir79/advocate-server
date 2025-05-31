@@ -50,9 +50,25 @@ const UpdateAdvocateService = async (id, advocateData) => {
   }
 };
 
+// dele advocate Service 
+
+const deleteAdvocateService=async(id)=>{
+    try{
+        const deleteAdvocate=await prisma.advocate.delete({
+            where:{id:id}
+        });
+        return deleteAdvocate
+
+    }
+    catch(err){
+        throw new Error(" Failed to delete advocate ")
+    }
+}
+
 export const AdvocateService = {
   CreateAdvocateService,
   getAllAdvocateServices,
   getSingleAdvocateServices,
   UpdateAdvocateService,
+  deleteAdvocateService
 };
