@@ -8,7 +8,7 @@ const CreateAdvocateService = async (advocateData) => {
     return advocate;
   } catch (err) {
     console.log(err);
-    throw new Error(' Failed to create Advocate ');
+    throw new Error(' Failed to create Advocate');
   }
 };
 

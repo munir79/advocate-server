@@ -8,19 +8,20 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
-  email    String @unique
-  password String
-  role     String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("user")
+  createdAt DateTime @default(now())
 
   // সম্পর্ক: একজন User অনেক Advocate থাকতে পারে
 }
 
 model Advocate {
-  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
   name           String
-  email          String @unique
+  email          String  @unique
   phone          String
   specialization String
   experience     Int
