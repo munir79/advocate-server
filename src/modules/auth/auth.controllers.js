@@ -30,4 +30,4 @@ const signIn = async (req, res, next) => {
   }
 };
 
-export const AuthControllers = { CreateUSerControllers };
+export const AuthControllers = { CreateUSerControllers ,signIn};

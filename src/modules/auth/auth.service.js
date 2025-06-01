@@ -33,7 +33,7 @@ const registarUser = async (userData) => {
 const loginUser = async (userData) => {
   try {
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: { email: userData.email },
     });
     if (!user) {
       throw new Error(404, ' user not found');
@@ -56,16 +56,16 @@ const loginUser = async (userData) => {
       }
     );
 
-    //remove password before returning 
-    const {password:_,...userWithoutPassword }=user;
+    //remove password before returning
+    const { password: _, ...userWithoutPassword } = user;
 
-    return{
-        token,
-        user:userWithoutPassword
-    }
+    return {
+      token,
+      user: userWithoutPassword,
+    };
   } catch (err) {
     throw new Error('No User ');
   }
 };
 
-export const AuthService = { registarUser , loginUser};
+export const AuthService = { registarUser, loginUser };
