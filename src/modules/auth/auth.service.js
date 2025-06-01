@@ -14,9 +14,12 @@ const registarUser = async (userData) => {
       throw new Error(400, 'user Already Exissts');
     }
 
+
+
+    console.log("new ",userData)
     const CretaeUser = await prisma.user.create({
       data: {
-        name: userData.name,
+        // name: userData.name,
         email: userData.email,
         password: hashPassword,
       },
@@ -38,6 +41,7 @@ const loginUser = async (userData) => {
     if (!user) {
       throw new Error(404, ' user not found');
     }
+    console.log("userdata from login user",userData);
     const isMatch = await bcrypt.compare(userData.password, user.password);
     if (!isMatch) {
       throw new Error(' incorrect password');

@@ -3,6 +3,7 @@ import { AuthService } from './auth.service.js';
 const CreateUSerControllers = async (req, res, next) => {
   try {
     const userData = req.body;
+    console.log("userData",userData);
     const cretaeUser = await AuthService.registarUser(userData);
     res.status(200).json({
       sucess: true,
