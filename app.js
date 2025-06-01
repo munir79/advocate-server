@@ -4,6 +4,7 @@ import { AdvocateRoute } from './src/modules/advocate/advocate.route.js';
 import notFound from './src/middlewares/notFound.js';
 import globalErrorHandelar from './src/middlewares/globalErrorHandelar.js';
 import { UserRoute } from './src/modules/auth/auth.route.js';
+import { LegalCaseRoute } from './src/modules/case/case.route.js';
 
 
 const app=express();
@@ -16,6 +17,7 @@ app.use(express.json());
 //routes 
 app.use('/api/v1/advocates',AdvocateRoute);
 app.use('/api/v1/user',UserRoute);
+app.use('/api/v1/legalcase',LegalCaseRoute);
 
 app.use(notFound);
 app.use(globalErrorHandelar);

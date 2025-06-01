@@ -32,7 +32,9 @@ model Legalcase {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   tittle      String
   description String
-  status      String
+  status      String?
+  createdAt DateTime @default(now())
+  updateAdt  DateTime @updatedAt
 }
 
 model Court {
