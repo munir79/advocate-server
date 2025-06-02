@@ -42,7 +42,7 @@ const getSingleAdvocate = async (req, res, next) => {
     }
     res.status(200).json({
       sucessa: true,
-      message: ' Advoca fetch sucessfully ',
+      message: ' Advocated  fetch sucessfully ',
       data: advocate,
     });
   } catch (err) {
@@ -56,49 +56,48 @@ const updateAdvocateControllers = async (req, res, next) => {
     const { id } = req.params;
     const data = req.body;
     const updateAdvocate = await AdvocateService.UpdateAdvocateService(id, data);
-    if(!updateAdvocate){
-        return res.status(404).json({
-            success:false,
-            message:"Advocate not found "
-        })
+    if (!updateAdvocate) {
+      return res.status(404).json({
+        success: false,
+        message: 'Advocate not found ',
+      });
     }
     return res.status(200).json({
-        success:true,
-        message:"advocate Update successfully",
-        data:updateAdvocate
-    })
+      success: true,
+      message: 'advocate Update successfully',
+      data: updateAdvocate,
+    });
   } catch (err) {
     next(err);
   }
 };
 
-// deleteAdvocate 
+// deleteAdvocate
 
-const deleteAdvocateControllers=async(req,res,next)=>{
-    try{
-     const {id}=req.params;
-     const deleteAdvocate=await AdvocateService.deleteAdvocateService(id);
-     if(!deleteAdvocate){
-        return res.status(404).json({
-            success:false,
-            message:" advocate not found "
-        })
-     }
-     res.status(200).json({
-        success:true,
-        message:"Advocate deleted SuccessFully",
-        data:deleteAdvocate,
-     })
+const deleteAdvocateControllers = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deleteAdvocate = await AdvocateService.deleteAdvocateService(id);
+    if (!deleteAdvocate) {
+      return res.status(404).json({
+        success: false,
+        message: ' advocate not found ',
+      });
     }
-    catch(err){
-        next(err)
-    }
-}
+    res.status(200).json({
+      success: true,
+      message: 'Advocate deleted SuccessFully',
+      data: deleteAdvocate,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const AdvocateControllers = {
   CreateAdvocateControllers,
   getAllAdvocates,
   getSingleAdvocate,
   updateAdvocateControllers,
-  deleteAdvocateControllers
+  deleteAdvocateControllers,
 };
