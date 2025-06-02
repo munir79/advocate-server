@@ -18,10 +18,12 @@ model User {
   // name      String?
   email     String   @unique
   password  String
+  resetToken String ? //for  password reset
+  resetTokenExpiry DateTime? // expire time 
   // role      Role?   @default(user)
   createdAt DateTime @default(now())
+  // updatedAdt DateTime @updatedAt
 
-  // সম্পর্ক: একজন User অনেক Advocate থাকতে পারে
 }
 
 model Advocate {
