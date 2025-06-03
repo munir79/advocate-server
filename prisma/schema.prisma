@@ -20,6 +20,7 @@ model User {
   password  String
   resetToken String ? //for  password reset
   resetTokenExpiry DateTime? // expire time 
+  profileImage  String? // optional image fileName 
   // role      Role?   @default(user)
   createdAt DateTime @default(now())
   // updatedAdt DateTime @updatedAt

@@ -6,6 +6,7 @@ import sendEmail from '../../utils/sendEmail.js';
 const JWT_SECRECTKEY = process.env.JWT_SECRET;
 const registarUser = async (userData) => {
   try {
+    const {email,password,profileImage}=userData;
     const hashPassword = await bcrypt.hash(userData.password, 10);
     const isExist = await prisma.user.findUnique({
       where: { email: userData.email },
@@ -21,6 +22,7 @@ const registarUser = async (userData) => {
         // name: userData.name,
         email: userData.email,
         password: hashPassword,
+        profileImage
       },
     });
 

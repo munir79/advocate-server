@@ -3,8 +3,10 @@ import { AuthService } from './auth.service.js';
 const CreateUSerControllers = async (req, res, next) => {
   try {
     const userData = req.body;
+    const profileImage=req.file?.filename; // multer file name 
+
     console.log("userData",userData);
-    const cretaeUser = await AuthService.registarUser(userData);
+    const cretaeUser = await AuthService.registarUser({...userData,profileImage});
     res.status(200).json({
       sucess: true,
       message: ' User Created SucesFully',
