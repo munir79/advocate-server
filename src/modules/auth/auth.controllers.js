@@ -3,10 +3,10 @@ import { AuthService } from './auth.service.js';
 const CreateUSerControllers = async (req, res, next) => {
   try {
     const userData = req.body;
-    const profileImage=req.file?.filename; // multer file name 
+    const profileImage = `uploads/images/${req.file?.filename}`; // multer file name
 
-    console.log("userData",userData);
-    const cretaeUser = await AuthService.registarUser({...userData,profileImage});
+    console.log('userData', userData);
+    const cretaeUser = await AuthService.registarUser({ ...userData, profileImage });
     res.status(200).json({
       sucess: true,
       message: ' User Created SucesFully',
@@ -33,34 +33,36 @@ const signIn = async (req, res, next) => {
   }
 };
 
+const forgetPasswordControllers = async (req, res, next) => {
+  try {
+    const email = req.body.email;
+    const result = await AuthService.forgetPassword(email);
+    res.status(200).json({
+      sucess: true,
+      message: result.message,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
-const forgetPasswordControllers= async(req, res, next)=>{
-  try{
-    const email=req.body.email;
-  const result = await AuthService.forgetPassword(email);
-  res.status(200).json({
-    sucess:true,
-    message:result.message
-  })
+// reset password controllers
+const resetPasswordControllers = async (req, res, next) => {
+  try {
+    const { token, newPassword } = req.body;
+    const result = await AuthService.resetPassword(token, newPassword);
+    res.status(200).json({
+      sucess: true,
+      message: result.message,
+    });
+  } catch (err) {
+    next(err);
   }
-  catch(err){
-    next(err)
-  }
-}
+};
 
-// reset password controllers 
-const resetPasswordControllers=async(req,res,next)=>{
-  try{
-     const {token,newPassword}=req.body;
-     const result =await AuthService.resetPassword(token,newPassword);
-     res.status(200).json({
-      sucess:true,
-      message:result.message
-     })
-  }
-  catch(err){
-    next(err)
-  }
-}
-
-export const AuthControllers = { CreateUSerControllers ,signIn,forgetPasswordControllers,resetPasswordControllers};
+export const AuthControllers = {
+  CreateUSerControllers,
+  signIn,
+  forgetPasswordControllers,
+  resetPasswordControllers,
+};
