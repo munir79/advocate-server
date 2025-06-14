@@ -52,3 +52,11 @@ model Court {
   address String
   type    String
 }
+
+
+model Hero {
+  id    String   @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  tittle String 
+
+}

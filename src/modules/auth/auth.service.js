@@ -13,7 +13,7 @@ const registarUser = async (userData) => {
     });
 
     if (isExist) {
-      throw new Error(400, 'user Already Exissts');
+      throw new Error('user Already Exissts');
     }
 
     console.log('new ', userData);

@@ -7,6 +7,7 @@ import { UserRoute } from './src/modules/auth/auth.route.js';
 import { LegalCaseRoute } from './src/modules/case/case.route.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { HeroRoutes } from './src/modules/hero/hero.route.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,6 +24,7 @@ app.use('/uploads/images', express.static(path.join(__dirname, "uploads/images")
 app.use('/api/v1/advocates',AdvocateRoute);
 app.use('/api/v1/user',UserRoute);
 app.use('/api/v1/legalcase',LegalCaseRoute);
+app.use('/api/v1/hero',HeroRoutes);
 
 app.use(notFound);
 app.use(globalErrorHandelar);
