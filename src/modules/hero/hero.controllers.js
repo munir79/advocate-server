@@ -34,4 +34,32 @@ const GetHeroDataControllers = async (req, res, next) => {
   }
 };
 
-export const HeroControllers = { HeroDataCreateControllers, GetHeroDataControllers };
+
+// updateHroDataControllers 
+
+const UpdateHeroDataControllers=async(req, res, next)=>{
+    try{
+     const {id}=req.params;
+     const UpdateData=req.body;
+     
+     if(req.file?.filename){
+      UpdateData.profileImage = `uploads/images/${req.file.filename}`;
+
+     }
+
+     const result =await HeroService.UpdateHeroDataIntoDb(id,UpdateData);
+     res.status(200).json({
+        success:true,
+        message:" Hero Data Updated Successfully ",
+        data:result
+     })
+    }
+    catch(err){
+        next(err)
+    }
+}
+
+
+
+
+export const HeroControllers = { HeroDataCreateControllers, GetHeroDataControllers ,UpdateHeroDataControllers};
