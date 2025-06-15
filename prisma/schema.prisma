@@ -58,5 +58,6 @@ model Hero {
   id    String   @id @default(auto()) @map("_id") @db.ObjectId
   name String
   tittle String 
+  profileImage String 
 
 }

@@ -2,6 +2,7 @@ import prisma from "../../prisma/prismaClient.js"
 
 
 const CreateHeroDataIntoDb=async(payLoad)=>{
+    console.log("her create data ",payLoad);
     const result =await prisma.hero.create({data:payLoad});
      return result;
 }
