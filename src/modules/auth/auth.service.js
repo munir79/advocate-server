@@ -28,7 +28,7 @@ const registarUser = async (userData) => {
 
     return CretaeUser;
   } catch (err) {
-    throw new Error('failed to create user ');
+    throw new Error('failed to create user ',);
   }
 };
 

@@ -61,3 +61,17 @@ model Hero {
   profileImage String 
 
 }
+
+model Profile {
+  id String @id @default(auto())  @map("_id") @db.ObjectId
+  facebook String
+  youtube String
+  linkidin String
+  twitter String 
+  phone String
+  email String
+  location String
+  workinghours String
+
+}
+
