@@ -15,7 +15,7 @@ router.patch(
   validateRequest(ServicesValidationSchema),
   SericeControllers.UpdateServiceCardControllers
 );
-router.delete('/delete/:id', SericeControllers.deletedCardServiceControllers);
+router.delete('/delete-service/:id', SericeControllers.deletedCardServiceControllers);
 router.get('/get-single/:id', SericeControllers.getSingleCardServiceControllers);
 
 export const ServiceRoutes = router;

@@ -89,7 +89,7 @@ const getSingleCardServiceControllers=async(req,res,next)=>{
     try{
      const {id}=req.params;
      const result=await CardService.getSingelCardService(id);
-     res.staus(200).json({
+     res.status(200).json({
         success:true,
 
         message:'get single data successfully ',
