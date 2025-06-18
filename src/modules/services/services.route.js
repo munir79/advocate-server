@@ -6,5 +6,6 @@ import { SericeControllers } from './services.controllers.js';
 
  router.post('/create-service',validateRequest(ServicesValidationSchema),SericeControllers.CreateServiceControllers);
  router.get('/get-all-service',SericeControllers.getAllServiceControllersFromDb);
+ router.patch('/update-service/:id',validateRequest(ServicesValidationSchema),SericeControllers.UpdateServiceCardControllers);
 
  export const  ServiceRoutes=router;

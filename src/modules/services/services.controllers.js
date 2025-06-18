@@ -29,4 +29,22 @@ const getAllServiceControllersFromDb = async (req, res, next) => {
   }
 };
 
-export const SericeControllers = { CreateServiceControllers, getAllServiceControllersFromDb };
+const UpdateServiceCardControllers=async(req, res,next)=>{
+    try{
+        const {id}=req.params;
+        const payLoad=req.body;
+        const update=await CardService.UpdateCardService(id,payLoad);
+        res.status(200).json({
+            success:true,
+            message:"SuccessFully updated Services",
+            data:update
+        })
+
+
+    }
+    catch(err){
+        next(err)
+    }
+}
+
+export const SericeControllers = { CreateServiceControllers, getAllServiceControllersFromDb,UpdateServiceCardControllers };
