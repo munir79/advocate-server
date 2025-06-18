@@ -67,4 +67,23 @@ const getSingleProfileFromDb=async(id)=>{
     }
 }
 
- export const ProfileService={profileCreateIntoDb,UpdatedProfileInDb,getSingleProfileFromDb};
+// get all profile from db 
+
+
+const getProfileFromDb=async()=>{
+    try{
+     const  result=await prisma.profile.findMany();
+     
+     if(!result){
+        throw new Error(" Profile not found ");
+     }
+
+     return result;
+
+    }
+    catch(err){
+        throw new Error(` Failed do get Profile Data :${err.message} `)
+    }
+}
+
+ export const ProfileService={profileCreateIntoDb,UpdatedProfileInDb,getSingleProfileFromDb,getProfileFromDb};

@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { HeroRoutes } from './src/modules/hero/hero.route.js';
 import { ProfileRouter } from './src/modules/profile/profile.route.js';
+import { ServiceRoutes } from './src/modules/services/services.route.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,6 +28,7 @@ app.use('/api/v1/user',UserRoute);
 app.use('/api/v1/legalcase',LegalCaseRoute);
 app.use('/api/v1/hero',HeroRoutes);
 app.use('/api/v1/profile',ProfileRouter);
+app.use('/api/v1/service',ServiceRoutes);
 
 app.use(notFound);
 app.use(globalErrorHandelar);

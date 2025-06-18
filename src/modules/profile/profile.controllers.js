@@ -1,3 +1,4 @@
+import { get } from "node:https";
 import { ProfileService } from "./profile.service.js";
 
 
@@ -55,4 +56,22 @@ const getSingleProfileDataControllers=async(req,res,next)=>{
    }
 }
 
-export const ProfileControllers={profilecreateControllers,profileUpdateControllers,getSingleProfileDataControllers}
+// get All profile 
+const getProfileDataControllers=async(req,res,next)=>{
+   try{
+   
+
+   const result=await ProfileService.getProfileFromDb();
+   res.status(200).json({
+    success:true,
+    message:" get all profiler data successfully ",
+    data:result
+   })
+
+   }
+   catch(err){
+   next(err)
+   }
+}
+
+export const ProfileControllers={profilecreateControllers,profileUpdateControllers,getSingleProfileDataControllers,getProfileDataControllers}
