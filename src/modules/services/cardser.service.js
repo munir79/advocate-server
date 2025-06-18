@@ -1,26 +1,26 @@
 import prisma from '../../prisma/prismaClient.js';
 
-// create service
+//1. create service
 const createServiceIntoDb = async (Payload) => {
   const result = await prisma.service.create({ data: Payload });
   return result;
 };
 
-//  get service
+// 2. get service
 
 const getAllServicefromDb = async () => {
   const result = await prisma.service.findMany();
   return result;
 };
 
-// get single card service
+// 3.get single card service
 
 const getSingelCardService = async (id) => {
   const result = await prisma.service.findUnique({ where: { id } });
   return result;
 };
 
-// update service
+// 4.update service
 
 const UpdateCardService = async (id, payLoad) => {
   const result = await prisma.service.update({
@@ -30,9 +30,17 @@ const UpdateCardService = async (id, payLoad) => {
   return result;
 };
 
+
+//5. delete card service 
+const deletdCardSevice=async(id)=>{
+    const result=await prisma.service.delete({where:{id}});
+    return result ;
+}
+
 export const CardService = {
   createServiceIntoDb,
   getAllServicefromDb,
   getSingelCardService,
   UpdateCardService,
+  deletdCardSevice
 };
